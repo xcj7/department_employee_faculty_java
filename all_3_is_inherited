@@ -1,0 +1,156 @@
+
+
+
+
+
+
+class Department
+{
+    private int deptId;
+    private String deptName;
+
+    public Department()
+    {
+
+    }
+    public Department(int deptId , String deptName)
+    {
+        this.deptId = deptId;
+        this.deptName = deptName;
+    }
+    public void setDeptId(int deptId)
+    {
+        this.deptId = deptId;
+    }
+    public void setDeptName(String deptName)
+    {
+        this.deptName = deptName;
+    }
+    public int getDeptId()
+    {
+        return deptId;
+    }
+    public String getDeptName()
+    {
+        return deptName;
+    }
+
+    public void display1()
+    {
+        //System.out.println("Department Name is :"+deptName);
+        //System.out.println("Depertment Id is :"+deptId);
+    }
+}
+
+
+
+
+
+
+
+
+class Employee extends Department {
+    private String empName;
+    private double salary;
+
+    Employee() {
+
+    }
+
+    Employee(String empName, Double salary,Department d) {
+        super(d.getDeptId(),d.getDeptName());
+        this.empName = empName;
+        this.salary = salary;
+
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+
+    public String getEmpName() {
+        return empName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+@Override
+    public void display1() {
+        super.display1();
+        System.out.println("Employee Name is :" + this.getEmpName());
+        System.out.println("Salary is : " + this.getSalary());
+		/*System.out.println("Department Name is :"+deptName);
+		System.out.println("Depertment Id is :"+deptId);
+		*/
+        //display1();
+    }
+}
+
+    class Faculty extends Employee {
+        private double teachingHour;
+        Department dept;
+
+        Faculty() {
+
+        }
+
+        Faculty( String empName, Double salary,double th, Department d) {
+            super(empName, salary,d);
+            teachingHour = th;
+            dept = d;
+        }
+
+        public void setTeachingHour(double th) {
+            this.teachingHour = th;
+        }
+
+        public void setDepartment(Department d) {
+            this.dept = d;
+        }
+
+        public double getTeachingHour() {
+            return teachingHour;
+        }
+
+        public Department getDepartment() {
+            return dept;
+        }
+@Override
+        public void display1() {
+            super.display1();
+            System.out.println("Teaching Hour is :" + teachingHour);
+
+            System.out.println("Department is : " + dept.getDeptName());
+		/*System.out.println("Employee Name is :"+empName);
+		System.out.println("Salary is : "+salary);
+		System.out.println("Department Name is :"+deptName);
+		System.out.println("Depertment Id is :"+deptId);
+		*/
+
+        }
+    }
+
+    public  class main {
+        public static void main(String[] args) {
+
+            //creating department
+            Department cs = new Department (1,"Computer Science");
+            //creating faculty
+            Faculty f1 = new Faculty( "Tony Stark", 100000.00,12,cs );
+//double th, Department d,String empName, Double salary,int deptId , String deptName
+            //f1.display2();
+            f1.display1();
+
+            //f1.display1();
+
+
+        }
+    }
+
+
